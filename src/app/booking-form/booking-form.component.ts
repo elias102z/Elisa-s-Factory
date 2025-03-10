@@ -1,23 +1,23 @@
 
-import { CommonModule } from '@angular/common'; // ✅ Import CommonModule
+import { CommonModule } from '@angular/common'; // Import CommonModule
 import { Component } from '@angular/core';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarOptions, EventInput } from '@fullcalendar/core';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { FormsModule } from '@angular/forms'; // ✅ Import FormsModule for ngModel
-import { BLOCKED_SLOTS } from '../bookings'; // ✅ Import blocked slots
-import { OFFERS } from '../offers'; // ✅ Import offers
+import { FormsModule } from '@angular/forms'; // Import FormsModule for ngModel
+import { BLOCKED_SLOTS } from '../bookings'; // Import blocked slots
+import { OFFERS } from '../offers'; // Import offers
 
 @Component({
   selector: 'app-booking-form',
   standalone: true,
-  imports: [FullCalendarModule, FormsModule, CommonModule], // ✅ Add FormsModule here
+  imports: [FullCalendarModule, FormsModule, CommonModule], // Add FormsModule here
   templateUrl: './booking-form.component.html',
   styleUrl: './booking-form.component.css'
 })
 export class BookingFormComponent {
-  events: EventInput[] = [...BLOCKED_SLOTS, ...this.loadEvents()]; // ✅ Merge blocked slots with saved events
+  events: EventInput[] = [...BLOCKED_SLOTS, ...this.loadEvents()]; // Merge blocked slots with saved events
 
   selectedDate: string = '';
   selectedTime: string = '';
@@ -40,7 +40,7 @@ export class BookingFormComponent {
     select: this.handleDateSelect.bind(this),
     eventClick: this.handleEventClick.bind(this),
   
-    // ✅ Prevent selecting blocked slots
+    // Prevent selecting blocked slots
     selectAllow: (selectInfo) => !this.isBlockedSlot(selectInfo.startStr)
   };
   
@@ -92,11 +92,11 @@ export class BookingFormComponent {
   }
 
   deleteAllEvents() {
-    localStorage.removeItem('calendarEvents'); // ✅ Completely clear stored events
-    localStorage.removeItem('cart'); // ✅ Ensure cart is also cleared
-    this.events = [...BLOCKED_SLOTS]; // ✅ Reset to only blocked slots
-    this.cartEvents = []; // ✅ Empty the cart
-    this.totalPrice = 0; // ✅ Reset total price
+    localStorage.removeItem('calendarEvents'); // Completely clear stored events
+    localStorage.removeItem('cart'); // Ensure cart is also cleared
+    this.events = [...BLOCKED_SLOTS]; // Reset to only blocked slots
+    this.cartEvents = []; // Empty the cart
+    this.totalPrice = 0; // Reset total price
     this.calendarOptions = { ...this.calendarOptions, events: this.events };
     console.log(this.events)
   }
@@ -112,7 +112,7 @@ export class BookingFormComponent {
   
 
   saveEvents() {
-    const savedEvents = this.events.filter(event => !BLOCKED_SLOTS.includes(event)); // ✅ Save only user-selected events
+    const savedEvents = this.events.filter(event => !BLOCKED_SLOTS.includes(event)); // Save only user-selected events
     localStorage.setItem('calendarEvents', JSON.stringify(savedEvents));
   }
 
@@ -130,12 +130,12 @@ openCart() {
   const storedEvents = localStorage.getItem('cart');
   this.cartEvents = storedEvents ? JSON.parse(storedEvents) : [];
 
-  // ✅ Remove blocked slots from the cart
+  // Remove blocked slots from the cart
   this.cartEvents = this.cartEvents.filter(event => 
     !BLOCKED_SLOTS.some(blocked => blocked.start === event.start)
   );
 
-  // ✅ Update total price based on valid cart items
+  // Update total price based on valid cart items
   this.totalPrice = this.cartEvents.reduce((sum, event) => {
     const service = OFFERS.find(s => s.name === event.title);
     return service ? sum + service.price : sum;
