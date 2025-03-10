@@ -1,3 +1,6 @@
+/* Hero section */
+/* ------------ */
+
 .hero {
     position: relative;
     width: 100%;
@@ -48,6 +51,9 @@
     z-index: 1;
 }
 
+/* Welcome section */
+/* ------------ */
+
 .welcome-text {
     width: 60%;
     margin-inline: auto;
@@ -70,6 +76,9 @@
 
 }
 
+/* Testimonial section */
+/* ------------ */
+
 .testimonial-section {
     padding: 60px 20px;
 }
@@ -80,6 +89,9 @@
     height: 150px;
     object-fit: cover;
 }
+
+/* Customers section */
+/* ------------ */
 
 .marquee {
     overflow: hidden;
