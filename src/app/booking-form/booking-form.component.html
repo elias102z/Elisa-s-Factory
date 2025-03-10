@@ -1,0 +1,24 @@
+<div class="booking-container">
+    <h2>Book Your Photo Session</h2>
+  
+    <form [formGroup]="bookingForm">
+      <label for="service">Choose a Service:</label>
+      <select id="service" formControlName="service">
+        <option value="">-- Select a Service --</option>
+        <option value="Service A">Service A</option>
+        <option value="Service B">Service B</option>
+        <option value="Service C">Service C</option>
+      </select>
+  
+      <label for="date">Choose a Date:</label>
+      <select id="date" formControlName="date">
+        <option value="">-- Select a Date --</option>
+        <option *ngFor="let date of availableDates" [value]="date">
+          {{ date | date: 'fullDate' }}
+        </option>
+      </select>
+  
+      <button type="button" (click)="sendRequest()">Send Request</button>
+    </form>
+</div>
+  
