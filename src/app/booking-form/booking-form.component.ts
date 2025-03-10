@@ -92,20 +92,24 @@ export class BookingFormComponent {
   }
 
   deleteAllEvents() {
-    this.events = [...BLOCKED_SLOTS]; // ✅ Keep blocked slots, remove everything else
-    this.saveEvents();
+    localStorage.removeItem('calendarEvents'); // ✅ Completely clear stored events
+    localStorage.removeItem('cart'); // ✅ Ensure cart is also cleared
+    this.events = [...BLOCKED_SLOTS]; // ✅ Reset to only blocked slots
+    this.cartEvents = []; // ✅ Empty the cart
+    this.totalPrice = 0; // ✅ Reset total price
     this.calendarOptions = { ...this.calendarOptions, events: this.events };
-    
-    console.log(this.events);
+    console.log(this.events)
   }
+  
 
   addToCart() {
-    const selectedEvents = this.events.filter(event => !BLOCKED_SLOTS.includes(event)); // ✅ Exclude blocked slots
+    const selectedEvents = this.events.filter(event => 
+      !BLOCKED_SLOTS.some(blocked => blocked.start === event.start)
+    );
     localStorage.setItem('cart', JSON.stringify(selectedEvents));
     alert('Events added to cart!');
-
-    console.log(this.events);
   }
+  
 
   saveEvents() {
     const savedEvents = this.events.filter(event => !BLOCKED_SLOTS.includes(event)); // ✅ Save only user-selected events
@@ -126,7 +130,12 @@ openCart() {
   const storedEvents = localStorage.getItem('cart');
   this.cartEvents = storedEvents ? JSON.parse(storedEvents) : [];
 
-  // ✅ Calculate total price
+  // ✅ Remove blocked slots from the cart
+  this.cartEvents = this.cartEvents.filter(event => 
+    !BLOCKED_SLOTS.some(blocked => blocked.start === event.start)
+  );
+
+  // ✅ Update total price based on valid cart items
   this.totalPrice = this.cartEvents.reduce((sum, event) => {
     const service = OFFERS.find(s => s.name === event.title);
     return service ? sum + service.price : sum;
@@ -134,6 +143,7 @@ openCart() {
 
   document.getElementById('cartModal')!.style.display = 'block';
 }
+
 
 closeCart() {
   document.getElementById('cartModal')!.style.display = 'none';
