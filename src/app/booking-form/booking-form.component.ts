@@ -8,6 +8,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { FormsModule } from '@angular/forms'; // Import FormsModule for ngModel
 import { BLOCKED_SLOTS } from '../bookings'; // Import blocked slots
 import { OFFERS } from '../offers'; // Import offers
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-booking-form',
@@ -17,6 +18,7 @@ import { OFFERS } from '../offers'; // Import offers
   styleUrl: './booking-form.component.css'
 })
 export class BookingFormComponent {
+  offers = OFFERS;
   events: EventInput[] = [...BLOCKED_SLOTS, ...this.loadEvents()]; // Merge blocked slots with saved events
 
   selectedDate: string = '';
@@ -58,16 +60,46 @@ export class BookingFormComponent {
     console.log(info.event.title);
     
     if (info.event.title === "Blocked") {
-      alert('This time slot is blocked.');
+      // alert('This time slot is blocked.');
+      Swal.fire({
+        title: 'Blocked Slot',
+        text: 'This time slot is blocked.',
+        icon: 'warning',
+        confirmButtonText: 'OK',
+        background: 'rgb(246, 248, 213)', 
+        color: 'rgb(0, 0, 0)', 
+        confirmButtonColor: 'rgb(32, 87, 129)'
+      });
     } else {
-      // you can remove other events
-      if (confirm(`Do you want to remove the event: "${info.event.title}"?`)) {
-        this.events = this.events.filter(event => event.start !== info.event.startStr);
-        this.saveEvents();
-        this.calendarOptions = { ...this.calendarOptions, events: this.events };
-        console.log(this.events);
-        
-      }
+
+      Swal.fire({
+        title: 'Are you sure?',
+        text: `Do you want to remove the event: "${info.event.title}"?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, remove it!',
+        cancelButtonText: 'Cancel',
+        background: 'rgb(246, 248, 213)', 
+        confirmButtonColor: '#d33', // Red color for confirm button
+        cancelButtonColor: 'rgb(32, 87, 129)' // Blue color for cancel button
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.events = this.events.filter(event => event.start !== info.event.startStr);
+          this.saveEvents();
+          this.calendarOptions = { ...this.calendarOptions, events: this.events };
+          console.log(this.events);
+      
+          Swal.fire({
+            title: 'Deleted!',
+            text: 'Your event has been removed.',
+            icon: 'success',
+            background: 'rgb(246, 248, 213)', 
+            confirmButtonText: 'OK',
+            confirmButtonColor: 'rgb(32, 87, 129)',
+          });
+        }
+      });
+      
     }
   }  
 
@@ -76,7 +108,15 @@ export class BookingFormComponent {
   
     // Prevent booking if the slot is blocked or overlaps with an existing event
     if (this.isBlockedSlot(selectedSlot) || this.isOverlappingSlot(selectedSlot)) {
-      alert("This time slot is unavailable.");
+      Swal.fire({
+        title: 'Blocked Slot',
+        text: 'This time slot is blocked.',
+        icon: 'warning',
+        confirmButtonText: 'OK',
+        background: 'rgb(246, 248, 213)', 
+        color: 'rgb(0, 0, 0)', 
+        confirmButtonColor: 'rgb(32, 87, 129)'
+      });
       return;
     }
   
@@ -150,7 +190,16 @@ export class BookingFormComponent {
       !BLOCKED_SLOTS.some(blocked => blocked.start === event.start)
     );
     localStorage.setItem('cart', JSON.stringify(selectedEvents));
-    alert('Events added to cart!');
+    // alert('Events added to cart!');
+    Swal.fire({
+      title: 'Slot added',
+      text: 'Slot added to the cart.',
+      icon: 'success',
+      confirmButtonText: 'OK',
+      background: 'rgb(246, 248, 213)', 
+      color: 'rgb(0, 0, 0)', 
+      confirmButtonColor: 'rgb(32, 87, 129)'
+    });
   }
   
 
@@ -193,7 +242,16 @@ closeCart() {
 }
 
 buyItems() {
-  alert('Purchase confirmed! 🎉');
+  // alert('Purchase confirmed! 🎉');
+  Swal.fire({
+    title: 'Slot booked',
+    text: 'Purchase confirmed! 🎉',
+    icon: 'success',
+    confirmButtonText: 'OK',
+    background: 'rgb(246, 248, 213)', 
+    color: 'rgb(0, 0, 0)', 
+    confirmButtonColor: 'rgb(32, 87, 129)'
+  });
   localStorage.removeItem('cart');
   this.cartEvents = [];
   this.closeCart();
@@ -202,4 +260,12 @@ buyItems() {
 getPrice(serviceName: string): number {
   return OFFERS.find(s => s.name === serviceName)?.price || 0;
 }
+
+scrollToCalendar() {
+  const calendarSection = document.getElementById('calendar-container');
+  if (calendarSection) {
+    calendarSection.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
 }
