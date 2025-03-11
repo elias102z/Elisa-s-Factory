@@ -121,32 +121,62 @@
     transform: translateX(-50%);
   }
 }
-
+/* Buttons to get to the gallery */
 .btn {
   color: white;
 }
 
 #btn1 {
   background-image: url("../../../public/landscapePhoto.jpg");
-  width: 15em;
-  height: 15em;
+  width: 14em;
+  height: 14em;
   background-size: cover;
 }
 #btn2 {
   background-image: url("../../../public/weddingPhoto.jpg");
-  width: 15em;
-  height: 15em;
+  width: 14em;
+  height: 14em;
   background-size: cover;
 }
 #btn3 {
   background-image: url("../../../public/portraitPhoto.jpg");
-  width: 15em;
-  height: 15em;
+  width: 14em;
+  height: 14em;
   background-size: cover;
 }
 #btn4 {
   background-image: url("../../../public/vacationPhoto.jpg");
-  width: 15em;
-  height: 15em;
+  width: 14em;
+  height: 14em;
+  background-size: cover;
+}
+#btn5 {
+  background-image: url("../../../public/fineArtPhoto.jpg");
+  width: 14em;
+  height: 14em;
+  background-size: cover;
+}
+#btn6 {
+  background-image: url("../../../public/poledancePhoto.jpg");
+  width: 14em;
+  height: 14em;
+  background-size: cover;
+}
+#btn7 {
+  background-image: url("../../../public/animalPhoto.jpg");
+  width: 14em;
+  height: 14em;
+  background-size: cover;
+}
+#btn8 {
+  background-image: url("../../../public/sportPhoto.jpg");
+  width: 14em;
+  height: 14em;
+  background-size: cover;
+}
+#btn9 {
+  background-image: url("../../../public/sciencePhoto.jpg");
+  width: 14em;
+  height: 14em;
   background-size: cover;
 }
