@@ -1,117 +1,180 @@
 <!-- Video Background -->
 <section class="hero">
-    <video #heroVideo autoplay muted loop playsinline class="hero-video">
-      <source src="hero_video.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-    <div class="hero-content">
-      <h1 class="display-1">Capturing Moments, Creating Memories</h1>
-      <!-- <p>Your journey starts here.</p> -->
-    </div>
+  <video #heroVideo autoplay muted loop playsinline class="hero-video">
+    <source src="hero_video.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <div class="hero-content">
+    <h1 class="display-1">Capturing Moments, Creating Memories</h1>
+    <!-- <p>Your journey starts here.</p> -->
+  </div>
 </section>
 <!-- ----------------- -->
 
 <!-- Overlay Video Background -->
-<div id="overlay"></div> 
+<div id="overlay"></div>
 <!-- ----------------- -->
 
 <!-- some text -->
 <div class="container">
-    <h1 class="text-center my-5">Welcome</h1>
-    <p class="text-justify welcome-text">        
-        Welcome to **[Your Photography Business Name]**, where every click tells a story. 
-        
-        Whether it's a wedding, portrait session, family gathering, or a professional brand shoot, I strive to create timeless images that reflect genuine emotions and unique personalities.  
-        
-        With a passion for storytelling through photography, I blend creativity and expertise to deliver stunning visuals that you'll cherish for a lifetime. 
+  <h1 class="text-center my-5">Welcome</h1>
+  <p class="text-justify welcome-text">
+    Welcome to **[Your Photography Business Name]**, where every click tells a
+    story. Whether it's a wedding, portrait session, family gathering, or a
+    professional brand shoot, I strive to create timeless images that reflect
+    genuine emotions and unique personalities. With a passion for storytelling
+    through photography, I blend creativity and expertise to deliver stunning
+    visuals that you'll cherish for a lifetime. Let's turn your special moments
+    into lasting memories. <br />
 
-        Let's turn your special moments into lasting memories.  <br>
-        
-        <br>
-        ✨ <strong>Book Your Session Today!</strong> ✨  
-        
-        📍 Available for shoots in [Your Location] </p>
+    <br />
+    ✨ <strong>Book Your Session Today!</strong> ✨ 📍 Available for shoots in
+    [Your Location]
+  </p>
 </div>
 
 <!-- gallery -->
 <div class="container">
-    <h1 class="text-center my-5">Gallery</h1>
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-        <!-- 1 -->
-        <button class="btn">Landscape Photoshoots</button>
-        <!-- 2 -->
-        <button class="btn">Wedding Photoshoots</button>
-        <!-- 3 -->
-        <button class="btn">Portrait Photoshoots</button>
-        <!-- 4 -->
-        <button class="btn">Vacation Photoshoots</button>
-        <!-- 5 -->
-        <button class="btn">Fine Art Photoshoots</button>
-        <!-- 6 -->
-        <button class="btn">Poledance Photoshoots</button>
-        <!-- 7 -->
-        <button class="btn">Animal Photoshoots</button>
-        <!-- 8 -->
-        <button class="btn">Extreme Sport Photoshoots</button>
-        <!-- 9 -->
-        <button class="btn">Science Photoshoots</button>
+  <h1 class="text-center my-5">Gallery</h1>
+  <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1 text-center">
+    <!-- 1 -->
+    <div class="col">
+      <button class="btn m-1" id="btn1" (click)="filterGallery('landscape')">
+        Landscape Photoshoots
+      </button>
     </div>
+    <!-- 2 -->
+    <div class="col">
+      <button class="btn m-1" id="btn2" (click)="filterGallery('wedding')">
+        Wedding Photoshoots
+      </button>
+    </div>
+    <!-- 3 -->
+    <div class="col">
+      <button class="btn m-1" id="btn3" (click)="filterGallery('portrait')">
+        Portrait Photoshoots
+      </button>
+    </div>
+    <!-- 4 -->
+    <div class="col">
+      <button class="btn m-1" id="btn4" (click)="filterGallery('vacation')">
+        Vacation Photoshoots
+      </button>
+    </div>
+    <!-- 5 -->
+    <div class="col">
+      <button class="btn m-1" id="btn5" (click)="filterGallery('fineart')">
+        Fine Art Photoshoots
+      </button>
+    </div>
+    <!-- 6 -->
+    <div class="col">
+      <button class="btn m-1" id="btn6" (click)="filterGallery('poledance')">
+        Poledance Photoshoots
+      </button>
+    </div>
+    <!-- 7 -->
+    <div class="col">
+      <button class="btn m-1" id="btn7" (click)="filterGallery('animal')">
+        Animal Photoshoots
+      </button>
+    </div>
+    <!-- 8 -->
+    <div class="col">
+      <button class="btn m-1" id="btn8" (click)="filterGallery('extreme')">
+        Extreme Sport Photoshoots
+      </button>
+    </div>
+    <!-- 9 -->
+    <div class="col">
+      <button class="btn m-1" id="btn9" (click)="filterGallery('science')">
+        Science Photoshoots
+      </button>
+    </div>
+  </div>
 </div>
 <!-- ----------------- -->
 
 <!-- Testimonials Section -->
 <section class="testimonial-section text-center">
-    <div class="container">
-        <h2 class="mb-4 text-center my-5">Testimonials</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="testimonial-member">
-                    <img src="https://cdn.pixabay.com/photo/2016/11/29/13/14/attractive-1869761_1280.jpg" alt="Team Member">
-                    <h5 class="mt-3">Jane Doe, 34</h5>
-                    <h6>CEO, IDontCare GmbH</h6>
-                    <p class="text-muted">"We had an incredible experience with [Photographer’s Name]. Their professionalism, attention to detail, and creative vision resulted in stunning photographs that we will cherish forever. They made us feel comfortable throughout the session, and the final edits were beyond our expectations. Highly recommended!"</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="testimonial-member">
-                    <img src="https://cdn.pixabay.com/photo/2018/02/16/14/38/portrait-3157821_1280.jpg" alt="Team Member">
-                    <h5 class="mt-3">John Smith, 37</h5>
-                    <h6>CTO, Nanny Industry</h6>
-                    <p class="text-muted">"Absolutely love our photos! [Photographer’s Name] was super fun to work with and made the whole experience so easy. The pictures turned out amazing—way better than we even imagined. If you're looking for someone who really knows how to capture the moment, look no further!"</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="testimonial-member">
-                    <img src="https://cdn.pixabay.com/photo/2018/01/22/07/31/portrait-3098319_1280.jpg" alt="Team Member">
-                    <h5 class="mt-3">Emma Brown, 28</h5>
-                    <h6>Head of Marketing, OnlyFans</h6>
-                    <p class="text-muted">"From the first consultation to the final album, [Photographer’s Name] exceeded our expectations. They perfectly captured every emotion, every detail, and every special moment of our wedding day. The photos are breathtaking, and we couldn’t be happier. Thank you for making our memories last forever!"</p>
-                </div>
-            </div>
+  <div class="container">
+    <h2 class="mb-4 text-center my-5">Testimonials</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="testimonial-member">
+          <img
+            src="https://cdn.pixabay.com/photo/2016/11/29/13/14/attractive-1869761_1280.jpg"
+            alt="Team Member"
+          />
+          <h5 class="mt-3">Jane Doe, 34</h5>
+          <h6>CEO, IDontCare GmbH</h6>
+          <p class="text-muted">
+            "We had an incredible experience with [Photographer’s Name]. Their
+            professionalism, attention to detail, and creative vision resulted
+            in stunning photographs that we will cherish forever. They made us
+            feel comfortable throughout the session, and the final edits were
+            beyond our expectations. Highly recommended!"
+          </p>
         </div>
+      </div>
+      <div class="col-md-4">
+        <div class="testimonial-member">
+          <img
+            src="https://cdn.pixabay.com/photo/2018/02/16/14/38/portrait-3157821_1280.jpg"
+            alt="Team Member"
+          />
+          <h5 class="mt-3">John Smith, 37</h5>
+          <h6>CTO, Nanny Industry</h6>
+          <p class="text-muted">
+            "Absolutely love our photos! [Photographer’s Name] was super fun to
+            work with and made the whole experience so easy. The pictures turned
+            out amazing—way better than we even imagined. If you're looking for
+            someone who really knows how to capture the moment, look no
+            further!"
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="testimonial-member">
+          <img
+            src="https://cdn.pixabay.com/photo/2018/01/22/07/31/portrait-3098319_1280.jpg"
+            alt="Team Member"
+          />
+          <h5 class="mt-3">Emma Brown, 28</h5>
+          <h6>Head of Marketing, OnlyFans</h6>
+          <p class="text-muted">
+            "From the first consultation to the final album, [Photographer’s
+            Name] exceeded our expectations. They perfectly captured every
+            emotion, every detail, and every special moment of our wedding day.
+            The photos are breathtaking, and we couldn’t be happier. Thank you
+            for making our memories last forever!"
+          </p>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 <!-- ----------------- -->
 
 <!-- Customers -->
- <div class="container">
-    <h1 class="text-center my-5">Customers</h1>
-    <div class="marquee">
-        <div class="marquee-inner">
-            <img src="microsoft_logo.jpg" alt="Logo 1">
-            <img src="apple_logo.svg" alt="Logo 2">
-            <img src="hofer_logo.jpg" alt="Logo 3">
-            <img src="codefactory_logo.png" alt="Logo 4">
-            <img src="nanny_logo.jpg" alt="Logo 5">
-            <img src="onlyfans_logo.webp" alt="Logo 6">
-            <!-- Duplicate the logos if needed for a seamless loop -->
-            <img src="microsoft_logo.jpg" alt="Logo 1">
-            <img src="apple_logo.svg" alt="Logo 2">
-            <img src="hofer_logo.jpg" alt="Logo 3">
-            <img src="codefactory_logo.png" alt="Logo 4">
-            <img src="nanny_logo.jpg" alt="Logo 5">
-            <img src="onlyfans_logo.webp" alt="Logo 6">
-        </div>
-    </div>  
+<div class="container">
+  <h1 class="text-center my-5">Customers</h1>
+  <div class="marquee">
+    <div class="marquee-inner">
+      <img src="microsoft_logo.jpg" alt="Logo 1" />
+      <img src="apple_logo.svg" alt="Logo 2" />
+      <img src="hofer_logo.jpg" alt="Logo 3" />
+      <img src="codefactory_logo.png" alt="Logo 4" />
+      <img src="nanny_logo.jpg" alt="Logo 5" />
+      <img src="onlyfans_logo.webp" alt="Logo 6" />
+      <!-- Duplicate the logos if needed for a seamless loop -->
+      <img src="microsoft_logo.jpg" alt="Logo 1" />
+      <img src="apple_logo.svg" alt="Logo 2" />
+      <img src="hofer_logo.jpg" alt="Logo 3" />
+      <img src="codefactory_logo.png" alt="Logo 4" />
+      <img src="nanny_logo.jpg" alt="Logo 5" />
+      <img src="onlyfans_logo.webp" alt="Logo 6" />
+    </div>
+  </div>
 </div>
 <!-- ---------- -->
