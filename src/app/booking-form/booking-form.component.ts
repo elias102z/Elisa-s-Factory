@@ -28,8 +28,16 @@ export class BookingFormComponent {
     initialView: 'timeGridWeek',
     nowIndicator: true,
     selectable: true,
-    editable: true,
+    // editable: true,
     events: this.events,
+
+    // excludes weekends
+    hiddenDays: [0,6],
+
+    // Prevent navigating to past weeks
+    validRange: {
+      start: new Date()
+    },
   
     slotMinTime: '10:00:00',
     slotMaxTime: '17:00:00',
@@ -46,31 +54,66 @@ export class BookingFormComponent {
   
 
   handleEventClick(info: any) {
-    if (confirm(`Do you want to remove the event: "${info.event.title}"?`)) {
-      this.events = this.events.filter(event => event.start !== info.event.startStr);
-      this.saveEvents();
-      this.calendarOptions = { ...this.calendarOptions, events: this.events };
+    // you cannot remove blocked events
+    console.log(info.event.title);
+    
+    if (info.event.title === "Blocked") {
+      alert('This time slot is blocked.');
+    } else {
+      // you can remove other events
+      if (confirm(`Do you want to remove the event: "${info.event.title}"?`)) {
+        this.events = this.events.filter(event => event.start !== info.event.startStr);
+        this.saveEvents();
+        this.calendarOptions = { ...this.calendarOptions, events: this.events };
+        console.log(this.events);
+        
+      }
     }
   }  
 
   handleDateSelect(selectInfo: any) {
     const selectedSlot = selectInfo.startStr;
-    
-    // ✅ Prevent blocked slots from being booked
-    if (this.isBlockedSlot(selectedSlot)) {
-      alert('This time slot is unavailable.');
+  
+    // Prevent booking if the slot is blocked or overlaps with an existing event
+    if (this.isBlockedSlot(selectedSlot) || this.isOverlappingSlot(selectedSlot)) {
+      alert("This time slot is unavailable.");
       return;
     }
+  
+    this.selectedDate = selectedSlot.split("T")[0];
+    this.selectedTime = selectedSlot.split("T")[1]?.substring(0, 5);
+    document.getElementById("eventModal")!.style.display = "block";
+  }
+  
 
-    this.selectedDate = selectedSlot.split('T')[0];
-    this.selectedTime = selectedSlot.split('T')[1]?.substring(0, 5);
-    document.getElementById('eventModal')!.style.display = 'block';
+  isBlockedSlot(dateTime: string) : boolean {
+    let blocked = true;
+    const found = BLOCKED_SLOTS.find((slot)=> dateTime == slot.start)
+    if (!found) {
+      blocked = false
+    } else {
+      blocked = true
+    }
+    return blocked;
   }
 
-  isBlockedSlot(dateTime: string): boolean {
-    return BLOCKED_SLOTS.some((event: EventInput) => event.start === dateTime);
+  isOverlappingSlot(dateTime: string): boolean {
+    const selectedStart = new Date(dateTime);
+    const selectedEnd = new Date(selectedStart.getTime() + 60 * 60 * 1000); // One-hour slot
+  
+    return this.events.some((event: EventInput) => {
+      const eventStart = new Date(event.start as string);
+      const eventEnd = new Date(eventStart.getTime() + 60 * 60 * 1000); // Assume 1-hour duration
+  
+      // Check if the new slot overlaps with an existing event
+      return (
+        (selectedStart >= eventStart && selectedStart < eventEnd) || // Starts within an existing event
+        (selectedEnd > eventStart && selectedEnd <= eventEnd) || // Ends within an existing event
+        (selectedStart <= eventStart && selectedEnd >= eventEnd) // Completely covers an existing event
+      );
+    });
   }
-
+  
   closeModal() {
     const modal = document.getElementById('eventModal');
     if (modal) modal.style.display = 'none';
@@ -79,7 +122,7 @@ export class BookingFormComponent {
   confirmEvent() {
     const newEvent = {
       title: this.selectedService,
-      start: `${this.selectedDate}T${this.selectedTime}:00`
+      start: `${this.selectedDate}T${this.selectedTime}:00+01:00`
     };
 
     this.events = [...this.events, newEvent];
@@ -121,7 +164,7 @@ export class BookingFormComponent {
     return storedEvents ? JSON.parse(storedEvents) : [];
   }
 
-// offers 
+// Offers 
 
 cartEvents: any[] = []; 
 totalPrice: number = 0;
@@ -159,6 +202,4 @@ buyItems() {
 getPrice(serviceName: string): number {
   return OFFERS.find(s => s.name === serviceName)?.price || 0;
 }
-
-
 }

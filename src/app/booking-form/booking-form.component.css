@@ -1,33 +1,6 @@
-/* .booking-container {
-    max-width: 400px;
-    margin: auto;
-    text-align: center;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  select, button {
-    padding: 10px;
-    font-size: 16px;
-  }
-  
-  button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  } */
 
   .calendar {
-    width: 20rem;
+    width: 50rem !important;
   }
 
   .calendar-buttons {
