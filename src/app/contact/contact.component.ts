@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import emailjs from '@emailjs/browser';
+import Swal from 'sweetalert2';
 
 interface ContactForm {
   name: string;
@@ -58,9 +59,11 @@ export class ContactComponent {
       templateParams
     )
     .then((response) => {
-      console.log('Email sent successfully!', response);
-      alert('Thank you for your message! We will get back to you soon.');
-      
+    Swal.fire({
+        title: "Thank you for your choosing US",
+        text: "check your mails for confirmation",
+        icon: "success"
+      });
 
       this.resetForm();
     })
