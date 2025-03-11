@@ -1,1 +1,9 @@
-<p>gallery works!</p>
+<div class="gallery row mx-auto">
+  <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let image of filteredImages">
+    <img
+      [src]="image.url"
+      alt="Image"
+      class="img-fluid shadow-1-strong rounded mb-4"
+    />
+  </div>
+</div>

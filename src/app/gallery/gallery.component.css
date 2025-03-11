@@ -1,0 +1,5 @@
+.gallery img {
+  width: 100%;
+  padding: 1vw;
+  object-fit: cover;
+}
