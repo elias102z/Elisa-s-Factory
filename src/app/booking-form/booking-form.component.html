@@ -1,11 +1,36 @@
 <!-- Cards with description of Services go here!!! -->
+<div class="container service-album">
+    <h1 class="display-2 text-center my-5">List of Offered Services</h1>
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1" id="results">
+      <div class="col mb-4" *ngFor="let offer of offers">
+        <div class="card">
+          <img [src]="offer.imgFile" class="card-img-top" alt="{{ offer.name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ offer.name }}</h5>
+            <p class="card-text">{{ offer.description }}</p>
+            <p class="card-text"><strong>Price/hour: </strong>${{ offer.price }}</p>
+            <button class="btn btn-primary btn-navy" (click)="scrollToCalendar()">Book Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+  
 <!-- --------------------------------------------- -->
+<div class="container calendar" id="calendar-container">
 
-<!-- Cart Button -->
-<button class="btn btn-primary" (click)="openCart()">Open Cart</button>
+    <!-- Cart Button -->
+    <button class="btn btn-primary btn-navy mb-3" (click)="openCart()">Open Cart</button>
 
-<!-- FullCalendar -->
-<full-calendar [options]="calendarOptions"></full-calendar>
+    <!-- FullCalendar -->
+    <full-calendar [options]="calendarOptions"></full-calendar>
+
+    <!-- Action Buttons -->
+    <div class="calendar-buttons">
+        <button class="btn btn-delete" (click)="deleteAllEvents()">Delete All</button>
+        <button class="btn btn-primary btn-navy" (click)="addToCart()">Add to Cart</button>
+    </div>
+</div>
 
 <!-- Event Modal -->
 <div id="eventModal" class="modal" tabindex="-1" style="display: none;">
@@ -25,6 +50,12 @@
           <option value="Service A">Service A</option>
           <option value="Service B">Service B</option>
           <option value="Service C">Service C</option>
+          <option value="Service D">Service D</option>
+          <option value="Service E">Service E</option>
+          <option value="Service F">Service F</option>
+          <option value="Service G">Service G</option>
+          <option value="Service H">Service H</option>
+          <option value="Service I">Service I</option>
         </select>
       </div>
       <div class="modal-footer">
@@ -33,12 +64,6 @@
       </div>
     </div>
   </div>
-</div>
-
-<!-- Action Buttons -->
-<div class="calendar-buttons">
-  <button class="btn btn-warning" (click)="deleteAllEvents()">Delete All</button>
-  <button class="btn btn-primary" (click)="addToCart()">Add to Cart</button>
 </div>
 
 <!-- Cart Modal -->
