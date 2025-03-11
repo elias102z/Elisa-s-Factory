@@ -1,0 +1,158 @@
+/* Allgemeine Stile */
+body {
+    background-color: var(--blau);
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+h1 {
+    color: var(--leichtgrün);
+}
+
+.camera-container p {
+    color: var(--gelb);
+}
+
+/* Hintergrundanimation */
+section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(https://image.freepik.com/free-photo/sport-composition-with-modern-elements_23-2147914163.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: -1;
+}
+
+/* Inhalt */
+.content {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    background: var(--türkis);
+    display: inline-block;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+/* Kamera als Hintergrund mit Skills-Overlay */
+.camera-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 500px;
+}
+
+.camera {
+    width: 100%;
+    height: auto;
+    opacity: 0.8; /* Leichte Transparenz für den Hintergrund */
+}
+
+/* Skills als Overlay */
+.skills-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 80%;
+}
+
+/* Animierte Bilder */
+.animated-img {
+    width: 200px;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    box-shadow: 5px 5px 15px rgba(195, 198, 20, 0.3);
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+.animated-img:hover {
+    transform: scale(1.1);
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Wellenanimation für Überschriften */
+.wave-text span {
+    display: inline-block;
+    font-size: 3rem;
+    animation: wave 2s ease-in-out infinite;
+}
+
+/* Verzögerung für jeden Buchstaben */
+.wave-text span:nth-child(1) { animation-delay: 0s; }
+.wave-text span:nth-child(2) { animation-delay: 0.2s; }
+.wave-text span:nth-child(3) { animation-delay: 0.4s; }
+.wave-text span:nth-child(4) { animation-delay: 0.6s; }
+.wave-text span:nth-child(5) { animation-delay: 0.8s; }
+.wave-text span:nth-child(6) { animation-delay: 1s; }
+.wave-text span:nth-child(7) { animation-delay: 1.2s; }
+.wave-text span:nth-child(8) { animation-delay: 1.4s; }
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+
+.intro-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    color: #333;
+    line-height: 1.6;
+    margin-top: 20px;
+}
+
+/* Teammitglied-Text */
+.team-role {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.7rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+}
+
+/* Team Bilder */
+.team-img {
+    width: 250px; /* Gleiche Größe für alle Bilder */
+    height: 250px; /* Gleiche Größe für alle Bilder */
+    object-fit: cover;
+    margin: 10px auto;
+    border-radius: 50%;
+    box-shadow: 5px 5px 15px rgba(195, 198, 20, 0.3);
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+.team-img:hover {
+    transform: scale(1.1);
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+ul.team {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    list-style: none;
+}
+
+ul.team li {
+    text-align: center;
+    margin: 0 20px;
+}
+
+
