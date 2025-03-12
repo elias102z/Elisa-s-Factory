@@ -1,3 +1,12 @@
+.body-page {
+  background-color: rgb(32, 87, 129) !important;
+  /* rgb(152, 210, 192) */
+}
+
+.service-album h1 {
+  color: rgb(152, 210, 192);
+  /* rgb(32, 87, 129) */
+}
 
 .btn-navy {
   background-color: rgb(152, 210, 192);
@@ -8,6 +17,7 @@
 .card {
   background-color:rgb(246, 248, 213) ;
   /* rgb(152, 210, 192) */
+  color:rgb(32, 87, 129) ;
 }
 
 .btn-delete {
@@ -17,7 +27,7 @@
 
 .calendar {
     width: 50rem !important;
-    margin-bottom: 5rem !important;
+    padding-bottom: 5rem !important;
     margin-top: 5rem !important;
 }
 
