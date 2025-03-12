@@ -1,3 +1,7 @@
+.body-page {
+  background-color: rgb(32, 87, 129) !important;
+}
+
 h1 {
   color: var(--leichtgrün);
 }
@@ -11,9 +15,13 @@ h1 {
 /* Inhalt */
 .content {
   padding: 2rem;
+  margin: 0 auto;
   background: var(--türkis);
-  display: inline-block;
   border-radius: 1rem;
+  border: 7px solid rgb(32, 87, 129);
+
+
+
 }
 
 .skills-container {
@@ -99,8 +107,10 @@ h1 {
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
 }
 
+
 /* Wellenanimation für Überschriften */
 .wave-text span {
+  
   display: inline-block;
   font-size: 3rem;
   animation: wave 2s ease-in-out infinite;
