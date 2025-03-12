@@ -15,6 +15,15 @@ h1 {
   border: 3rem solid rgb(32, 87, 129);
 }
 
+.intro-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 2rem;
+  color: #333;
+  line-height: 1.6;
+  /* margin-top: 20px; */
+  width: 50%;
+}
+
 .skills-container {
   background-image: url('../../../public/camera.jpg'); /* Adjust the path */
   background-size: cover; /* Ensures the image covers the entire div */
@@ -23,7 +32,7 @@ h1 {
   padding: 2rem; /* Adds spacing */
   border-radius: 10%; /* Optional: Adds rounded corners */
   color: white;
-  width: 60%;
+  width: 80%;
   height: auto;
   margin: 0 auto;
 
@@ -32,6 +41,7 @@ h1 {
     font-weight: bold;
     text-shadow: 0.1rem 0.1rem 1rem white;
     font-size: 2.5rem;
+    margin: 0 auto;
   }
 }
 
@@ -68,14 +78,19 @@ h1 {
 }
 
 @media (width <= 375px) {
+
+  .intro-text {
+    font-size: 1rem;
+  }
+
   .skills-list {
-    font-size: 1rem !important;
+    font-size: 0.5rem !important;
     padding: 0 0;
 }}
 
 @media (375px < width <= 768px) {
   .skills-list {
-    font-size: 2rem !important;
+    font-size: 1rem !important;
 }}
 
 
@@ -123,15 +138,6 @@ h1 {
   }
 }
 
-
-.intro-text {
-  font-family: 'Roboto', sans-serif;
-  font-size: 2rem;
-  color: #333;
-  line-height: 1.6;
-  /* margin-top: 20px; */
-  width: 50%;
-}
 
 /* Teammitglied-Text */
 .team-role {
