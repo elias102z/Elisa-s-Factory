@@ -41,6 +41,11 @@
         font-size: 14px;
         margin: 0;
       }
+
+      a {
+        color: #205781;
+      text-decoration: none;
+      }
     }
   
     hr {

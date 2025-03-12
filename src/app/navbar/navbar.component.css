@@ -12,3 +12,13 @@
     margin-right: 10px;
 }
 
+.navbar-toggler {
+    border-color:#98D2C0;
+  } 
+   
+  .navbar-toggler-icon {
+    background-color:#98D2C0; 
+    border-radius: 5px; 
+  } 
+  
+  
