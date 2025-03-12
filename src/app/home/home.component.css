@@ -1,6 +1,7 @@
 .background {
   background-color: #205781;
   color: #f6f8d5;
+  text-shadow: 0.1rem 0.1rem 1rem #98d2c0;
 }
 
 /* Hero section */
@@ -65,7 +66,6 @@
   border-radius: 5%;
   /* background-color: aqua; */
   text-align: justify;
-  text-shadow: 0.1rem 0.1rem 0.1rem#f6f8d5;
 }
 
 .card {
@@ -91,7 +91,9 @@
   height: 150px;
   object-fit: cover;
 }
-
+.font-italic {
+  font-style: italic;
+}
 /* Customers section */
 /* ------------ */
 
