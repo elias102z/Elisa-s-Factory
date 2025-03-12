@@ -1,7 +1,11 @@
 .navbar{
     z-index: 3;
+    background-color: #98D2C0!important; 
+    /*   */
+
 }
 .navbar-logo {
     height: 60px; 
     margin-right: 10px;
 }
+
