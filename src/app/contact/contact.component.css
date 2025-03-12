@@ -1,123 +1,126 @@
 .contact-container {
-    background-color: white;
-    font-family: 'Montserrat', sans-serif;
-    color: #333;
-  }
-  
-  /* Profile Image */
-  .profile-image {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Photographer Section */
-  .photographer-section {
-    padding: 20px;
-  }
-  
-  .photographer-section h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--blau);
-  }
-  
-  .photographer-section p {
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-  
-  .alternative-contact h3 {
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: var(--blau);
-  }
-  
-  .contact-details p {
-    margin-bottom: 0.5rem;
-  }
-  
-  /* Contact Form Container */
+  background-color: #f6f8d5;
+  font-family: "Montserrat", sans-serif;
+  color: #333;
+}
+
+/* Profile Image */
+.profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Photographer Section */
+.photographer-section {
+  padding: 20px;
+}
+
+.photographer-section h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--blau);
+}
+
+.photographer-section p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.alternative-contact h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--blau);
+}
+
+.contact-details p {
+  margin-bottom: 0.5rem;
+}
+
+/* Contact Form Container */
+.contact-form-container {
+  padding: 20px;
+  background-color: #f6f8d5;
+  border-radius: 5px;
+}
+
+.contact-form-container h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--blau);
+  margin-bottom: 1.5rem;
+}
+
+/* Form Elements */
+.form-control,
+.form-select {
+  border: 1px solid #ddd;
+  border-radius: 0;
+  padding: 10px 15px;
+  background-color: #f5f5f5;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--blau);
+  box-shadow: none;
+  background-color: white;
+}
+
+.form-control::placeholder {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.form-label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--blau);
+}
+
+/* Submit Button */
+.submit-btn {
+  background-color: var(--blau);
+  color: white;
+  border: none;
+  padding: 10px 40px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border-radius: 0;
+  text-transform: uppercase;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: var(--leichtgrün);
+}
+
+.submit-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Checkbox */
+.form-check-input {
+  width: 20px;
+  height: 20px;
+  margin-top: 0.25rem;
+}
+
+.form-check-input:checked {
+  background-color: var(--blau);
+  border-color: var(--blau);
+}
+
+.form-check-label {
+  padding-left: 0.5rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .photographer-section,
   .contact-form-container {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
+    margin-bottom: 20px;
   }
-  
-  .contact-form-container h1 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--blau);
-    margin-bottom: 1.5rem;
-  }
-  
-  /* Form Elements */
-  .form-control, .form-select {
-    border: 1px solid #ddd;
-    border-radius: 0;
-    padding: 10px 15px;
-    background-color: #f5f5f5;
-  }
-  
-  .form-control:focus, .form-select:focus {
-    border-color: var(--blau);
-    box-shadow: none;
-    background-color: white;
-  }
-  
-  .form-control::placeholder {
-    color: #999;
-    font-size: 0.9rem;
-  }
-  
-  .form-label {
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--blau);
-  }
-  
-  /* Submit Button */
-  .submit-btn {
-    background-color: var(--blau);
-    color: white;
-    border: none;
-    padding: 10px 40px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    border-radius: 0;
-    text-transform: uppercase;
-  }
-  
-  .submit-btn:hover:not(:disabled) {
-    background-color: var(--leichtgrün);
-  }
-  
-  .submit-btn:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-  }
-  
-  /* Checkbox */
-  .form-check-input {
-    width: 20px;
-    height: 20px;
-    margin-top: 0.25rem;
-  }
-  
-  .form-check-input:checked {
-    background-color: var(--blau);
-    border-color: var(--blau);
-  }
-  
-  .form-check-label {
-    padding-left: 0.5rem;
-    font-size: 0.9rem;
-  }
-  
-  @media (max-width: 768px) {
-    .photographer-section, .contact-form-container {
-      margin-bottom: 20px;
-    }
-  }
+}
