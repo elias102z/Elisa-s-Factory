@@ -110,7 +110,7 @@
   /* Adjust the animation duration (20s in this case) to control the sliding speed */
   animation: scroll 20s linear infinite;
   background-color: white;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 }
 
 .marquee-inner img {
