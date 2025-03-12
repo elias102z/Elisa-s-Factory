@@ -1,3 +1,24 @@
 .navbar{
     z-index: 3;
+    background-color: #98D2C0!important; 
+   a{
+    color: #205781;
+   }
+    
+
 }
+.navbar-logo {
+    height: 60px; 
+    margin-right: 10px;
+}
+
+.navbar-toggler {
+    border-color:#98D2C0;
+  } 
+   
+  .navbar-toggler-icon {
+    background-color:#98D2C0; 
+    border-radius: 5px; 
+  } 
+  
+  

@@ -1,4 +1,7 @@
-.gallery img {
+.gallery {
+  background-color: #205781;
+}
+img {
   width: 100%;
   padding: 1vw;
   object-fit: cover;
