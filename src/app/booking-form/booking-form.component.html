@@ -7,6 +7,7 @@
           <img [src]="offer.imgFile" class="card-img-top" alt="{{ offer.name }}">
           <div class="card-body">
             <h5 class="card-title">{{ offer.name }}</h5>
+            <h6 class="card-title">{{ offer.serviceType }}</h6>
             <p class="card-text">{{ offer.description }}</p>
             <p class="card-text"><strong>Price/hour: </strong>${{ offer.price }}</p>
             <button class="btn btn-primary btn-navy" (click)="scrollToCalendar()">Book Now</button>
