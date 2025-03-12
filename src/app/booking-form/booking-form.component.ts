@@ -51,7 +51,18 @@ export class BookingFormComponent {
     eventClick: this.handleEventClick.bind(this),
   
     // Prevent selecting blocked slots
-    selectAllow: (selectInfo) => !this.isBlockedSlot(selectInfo.startStr)
+    // selectAllow: (selectInfo) => !this.isBlockedSlot(selectInfo.startStr)
+    selectAllow: (selectInfo) => {
+      const selectedDate = new Date(selectInfo.startStr).toDateString();
+      const today = new Date().toDateString();
+    
+      // Disallow selection if the selected date is today
+      if (selectedDate === today) {
+        return false;
+      }
+    
+      return !this.isBlockedSlot(selectInfo.startStr);
+    }
   };
   
 
