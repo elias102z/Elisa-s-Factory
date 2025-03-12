@@ -1,6 +1,7 @@
 .background {
   background-color: #205781;
   color: #f6f8d5;
+  text-shadow: 0.1rem 0.1rem 1rem #98d2c0;
 }
 
 /* Hero section */
@@ -58,7 +59,7 @@
 /* ------------ */
 
 .welcome-text {
-  width: 60%;
+  width: 80%;
   margin-inline: auto;
   border: 1px solid black;
   padding: 2rem;
@@ -90,7 +91,9 @@
   height: 150px;
   object-fit: cover;
 }
-
+.font-italic {
+  font-style: italic;
+}
 /* Customers section */
 /* ------------ */
 

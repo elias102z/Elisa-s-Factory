@@ -28,6 +28,15 @@ export class GalleryComponent implements OnInit {
     { url: 'animal2.jpg', tag: 'animal' },
     { url: 'extreme2.jpg', tag: 'extreme' },
     { url: 'science2.jpg', tag: 'science' },
+    { url: 'landscape3.jpg', tag: 'landscape' },
+    { url: 'wedding3.jpg', tag: 'wedding' },
+    { url: 'portrait3.jpg', tag: 'portrait' },
+    { url: 'vacation3.jpg', tag: 'vacation' },
+    { url: 'fineart3.jpg', tag: 'fineart' },
+    { url: 'poledance3.jpg', tag: 'poledance' },
+    { url: 'animal3.jpg', tag: 'animal' },
+    { url: 'extreme3.jpg', tag: 'extreme' },
+    { url: 'science3.jpg', tag: 'science' },
   ];
 
   filteredImages = this.images;
