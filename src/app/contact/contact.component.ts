@@ -1,3 +1,4 @@
+// contact.component.ts
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -41,7 +42,6 @@ export class ContactComponent {
     this.submitted = true;
     this.loading = true;
     
-    
     emailjs.init('GlOorXRTu0yFm2PcH');
     
     const templateParams = {
@@ -53,23 +53,38 @@ export class ContactComponent {
       message: this.contactData.message
     };
     
+    // First email - to the customer for confirmation
     emailjs.send(
       'service_0unzrfn', 
       'template_y55gb2b', 
       templateParams
     )
     .then((response) => {
-    Swal.fire({
-        title: "Thank you for your choosing US",
-        text: "check your mails for confirmation",
+      console.log('Confirmation email sent to customer!', response);
+      
+      // Second email - to your business account
+      return emailjs.send(
+        'service_0unzrfn',  
+        'template_sbdl2eh', 
+        templateParams 
+      );
+    })
+    .then((response) => {
+      console.log('Notification email sent to business!', response);
+      Swal.fire({
+        title: "Thank you for choosing us",
+        text: "Check your email for confirmation",
         icon: "success"
       });
-
       this.resetForm();
     })
     .catch((error) => {
       console.error('Error sending email:', error);
-      alert('Sorry, there was a problem sending your message. Please try again later.');
+      Swal.fire({
+        title: "Error",
+        text: "Sorry, there was a problem sending your message. Please try again later.",
+        icon: "error"
+      });
     })
     .finally(() => {
       this.loading = false;
