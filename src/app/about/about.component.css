@@ -1,87 +1,116 @@
-/* Allgemeine Stile */
-body {
-  background-color: var(--blau);
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  text-align: center;
+.body-page {
+  background-color: rgb(32, 87, 129) !important;
 }
 
 h1 {
   color: var(--leichtgrün);
 }
 
-.camera-container p {
-  color: var(--gelb);
-}
-
-/* Hintergrundanimation */
-section {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url(https://image.freepik.com/free-photo/sport-composition-with-modern-elements_23-2147914163.jpg);
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  z-index: -1;
-}
-
 /* Inhalt */
 .content {
-  position: relative;
-  z-index: 1;
-  padding: 20px;
+  padding: 2rem;
+  margin: 0 auto;
   background: var(--türkis);
-  display: inline-block;
-  border-radius: 10px;
-  margin-top: 50px;
+  border-radius: 1rem;
+  border: 3rem solid rgb(32, 87, 129);
 }
 
-/* Kamera als Hintergrund mit Skills-Overlay */
-.camera-container {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  max-width: 500px;
+.intro-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  color: #333;
+  line-height: 1.6;
+  /* margin-top: 20px; */
+  width: 50%;
 }
 
-.cbild {
-  width: 100%;
-  height: auto;
-  opacity: 0.8; /* Leichte Transparenz für den Hintergrund */
-}
-
-/* Skills als Overlay */
-.skills-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.7);
+.skills-container {
+  background-image: url('../../../public/camera.jpg'); /* Adjust the path */
+  background-size: cover; /* Ensures the image covers the entire div */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents repetition */
+  padding: 2rem; /* Adds spacing */
+  border-radius: 10%; /* Optional: Adds rounded corners */
   color: white;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
   width: 80%;
+  height: auto;
+  margin: 0 auto;
+
+  .skills-list {
+    list-style: none;
+    font-weight: bold;
+    text-shadow: 0.1rem 0.1rem 1rem white;
+    font-size: 2.5rem;
+    margin: 0 auto;
+  }
 }
+
+.skills-list li {
+  opacity: 0;
+  transform: translateX(100%);
+  animation: slideIn 0.6s ease-out forwards;
+}
+
+/* Staggered delay for each item */
+.skills-list li:nth-child(1) {
+  animation-delay: 0.3s;
+}
+.skills-list li:nth-child(2) {
+  animation-delay: 0.6s;
+}
+.skills-list li:nth-child(3) {
+  animation-delay: 0.9s;
+}
+.skills-list li:nth-child(4) {
+  animation-delay: 1.2s;
+}
+
+/* Animation keyframes */
+@keyframes slideIn {
+  from {
+      opacity: 0;
+      transform: translateX(100%);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+@media (width <= 375px) {
+
+  .intro-text {
+    font-size: 0.7rem;
+  }
+
+  .skills-list {
+    font-size: 0.5rem !important;
+    padding: 0 0;
+}}
+
+@media (375px < width <= 768px) {
+  .skills-list {
+    font-size: 1rem !important;
+}}
+
 
 /* Animierte Bilder */
 .animated-img {
-  width: 200px;
+  width: 10rem;
   height: auto;
   display: block;
-  margin: 10px auto;
-  box-shadow: 5px 5px 15px rgba(195, 198, 20, 0.3);
+  margin: 5rem;
+  box-shadow: 0.1rem 0.1rem 2rem rgba(195, 198, 20, 0.3);
   transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+  border-radius: 5%;
+
 }
 
 .animated-img:hover {
-  transform: scale(1.1);
-  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+  transform: scale(1.3);
+  box-shadow: 1rem 1rem 3rem rgba(0, 0, 0, 0.5);
 }
+
 
 /* Wellenanimation für Überschriften */
 .wave-text span {
@@ -109,14 +138,6 @@ section {
   }
 }
 
-
-.intro-text {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.5rem;
-  color: #333;
-  line-height: 1.6;
-  margin-top: 20px;
-}
 
 /* Teammitglied-Text */
 .team-role {
@@ -167,8 +188,9 @@ work with us animation
   color: #fff;
   overflow: hidden;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 2rem;
   color: var(--türkis);
+  background-color: rgb(32, 87, 129);
 
 }
 
@@ -176,7 +198,7 @@ work with us animation
   display: inline-block;
   position: relative;
   transform: translateX(0);
-  animation-duration: 2s;
+  animation-duration: 8s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 }

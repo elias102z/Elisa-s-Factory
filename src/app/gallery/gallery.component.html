@@ -1,4 +1,8 @@
-<div class="gallery row mx-auto">
+<div class="container-fluid">
+  <button class="btn showAll m-3" (click)="showAllImages()">Show All</button>
+  <br />
+</div>
+<div class="gallery row mx-auto text-center">
   <div
     class="col-lg-4 col-md-6 col-sm-12 mt-2"
     *ngFor="let image of filteredImages"

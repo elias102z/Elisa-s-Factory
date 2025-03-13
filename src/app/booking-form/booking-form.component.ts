@@ -5,7 +5,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarOptions, EventInput } from '@fullcalendar/core';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { FormsModule } from '@angular/forms'; // Import FormsModule for ngModel
+import { FormsModule } from '@angular/forms'; // Import FormsModule 
 import { BLOCKED_SLOTS } from '../bookings'; // Import blocked slots
 import { OFFERS } from '../offers'; // Import offers
 import Swal from 'sweetalert2';
@@ -51,7 +51,18 @@ export class BookingFormComponent {
     eventClick: this.handleEventClick.bind(this),
   
     // Prevent selecting blocked slots
-    selectAllow: (selectInfo) => !this.isBlockedSlot(selectInfo.startStr)
+    // selectAllow: (selectInfo) => !this.isBlockedSlot(selectInfo.startStr)
+    selectAllow: (selectInfo) => {
+      const selectedDate = new Date(selectInfo.startStr).toDateString();
+      const today = new Date().toDateString();
+    
+      // Disallow selection if the selected date is today
+      if (selectedDate === today) {
+        return false;
+      }
+    
+      return !this.isBlockedSlot(selectInfo.startStr);
+    }
   };
   
 
@@ -68,7 +79,16 @@ export class BookingFormComponent {
         confirmButtonText: 'OK',
         background: 'rgb(246, 248, 213)', 
         color: 'rgb(0, 0, 0)', 
-        confirmButtonColor: 'rgb(32, 87, 129)'
+        confirmButtonColor: 'rgb(32, 87, 129)',
+        didOpen: () => {
+          sessionStorage.setItem('scrollY', window.scrollY.toString()); // Save scroll position
+        },
+        didClose: () => {
+          const savedScrollY = sessionStorage.getItem('scrollY');
+          if (savedScrollY) {
+            window.scrollTo(0, parseInt(savedScrollY, 10)); // Restore scroll position
+          }
+        }
       });
     } else {
 
@@ -81,7 +101,17 @@ export class BookingFormComponent {
         cancelButtonText: 'Cancel',
         background: 'rgb(246, 248, 213)', 
         confirmButtonColor: '#d33', // Red color for confirm button
-        cancelButtonColor: 'rgb(32, 87, 129)' // Blue color for cancel button
+        cancelButtonColor: 'rgb(32, 87, 129)', // Blue color for cancel button
+        didOpen: () => {
+          sessionStorage.setItem('scrollY', window.scrollY.toString()); // Save scroll position
+        },
+        didClose: () => {
+          const savedScrollY = sessionStorage.getItem('scrollY');
+          if (savedScrollY) {
+            window.scrollTo(0, parseInt(savedScrollY, 10)); // Restore scroll position
+          }
+        }
+
       }).then((result) => {
         if (result.isConfirmed) {
           this.events = this.events.filter(event => event.start !== info.event.startStr);
@@ -96,6 +126,15 @@ export class BookingFormComponent {
             background: 'rgb(246, 248, 213)', 
             confirmButtonText: 'OK',
             confirmButtonColor: 'rgb(32, 87, 129)',
+            didOpen: () => {
+              sessionStorage.setItem('scrollY', window.scrollY.toString()); // Save scroll position
+            },
+            didClose: () => {
+              const savedScrollY = sessionStorage.getItem('scrollY');
+              if (savedScrollY) {
+                window.scrollTo(0, parseInt(savedScrollY, 10)); // Restore scroll position
+              }
+            }
           });
         }
       });
@@ -115,7 +154,16 @@ export class BookingFormComponent {
         confirmButtonText: 'OK',
         background: 'rgb(246, 248, 213)', 
         color: 'rgb(0, 0, 0)', 
-        confirmButtonColor: 'rgb(32, 87, 129)'
+        confirmButtonColor: 'rgb(32, 87, 129)',
+        didOpen: () => {
+          sessionStorage.setItem('scrollY', window.scrollY.toString()); // Save scroll position
+        },
+        didClose: () => {
+          const savedScrollY = sessionStorage.getItem('scrollY');
+          if (savedScrollY) {
+            window.scrollTo(0, parseInt(savedScrollY, 10)); // Restore scroll position
+          }
+        }
       });
       return;
     }
@@ -198,7 +246,16 @@ export class BookingFormComponent {
       confirmButtonText: 'OK',
       background: 'rgb(246, 248, 213)', 
       color: 'rgb(0, 0, 0)', 
-      confirmButtonColor: 'rgb(32, 87, 129)'
+      confirmButtonColor: 'rgb(32, 87, 129)',
+      didOpen: () => {
+        sessionStorage.setItem('scrollY', window.scrollY.toString()); // Save scroll position
+      },
+      didClose: () => {
+        const savedScrollY = sessionStorage.getItem('scrollY');
+        if (savedScrollY) {
+          window.scrollTo(0, parseInt(savedScrollY, 10)); // Restore scroll position
+        }
+      }
     });
   }
   
@@ -250,7 +307,16 @@ buyItems() {
     confirmButtonText: 'OK',
     background: 'rgb(246, 248, 213)', 
     color: 'rgb(0, 0, 0)', 
-    confirmButtonColor: 'rgb(32, 87, 129)'
+    confirmButtonColor: 'rgb(32, 87, 129)',
+    didOpen: () => {
+      sessionStorage.setItem('scrollY', window.scrollY.toString()); // Save scroll position
+    },
+    didClose: () => {
+      const savedScrollY = sessionStorage.getItem('scrollY');
+      if (savedScrollY) {
+        window.scrollTo(0, parseInt(savedScrollY, 10)); // Restore scroll position
+      }
+    }
   });
   localStorage.removeItem('cart');
   this.cartEvents = [];

@@ -1,104 +1,106 @@
-<!-- Cards with description of Services go here!!! -->
-<div class="container service-album">
-    <h1 class="display-2 text-center my-5">List of Offered Services</h1>
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1" id="results">
-      <div class="col mb-4" *ngFor="let offer of offers">
-        <div class="card">
-          <img [src]="offer.imgFile" class="card-img-top" alt="{{ offer.name }}">
-          <div class="card-body">
-            <h5 class="card-title">{{ offer.name }}</h5>
-            <h6 class="card-title">{{ offer.serviceType }}</h6>
-            <p class="card-text">{{ offer.description }}</p>
-            <p class="card-text"><strong>Price/hour: </strong>${{ offer.price }}</p>
-            <button class="btn btn-primary btn-navy" (click)="scrollToCalendar()">Book Now</button>
+<div class="container-fluid body-page">
+  <!-- Cards with description of Services go here!!! -->
+  <div class="container service-album">
+      <h1 class="display-2 text-center mb-5">List of Offered Services</h1>
+      <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1" id="results">
+        <div class="col mb-4" *ngFor="let offer of offers">
+          <div class="card">
+            <img [src]="offer.imgFile" class="card-img-top" alt="{{ offer.name }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ offer.name }}</h5>
+              <h6 class="card-title">{{ offer.serviceType }}</h6>
+              <p class="card-text">{{ offer.description }}</p>
+              <p class="card-text"><strong>Price/hour: </strong>${{ offer.price }}</p>
+              <button class="btn btn-primary btn-navy" (click)="scrollToCalendar()">Book Now</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-</div>
-  
-<!-- --------------------------------------------- -->
-<div class="container calendar" id="calendar-container">
+  </div>
+    
+  <!-- --------------------------------------------- -->
+  <div class="container calendar" id="calendar-container">
 
-    <!-- Cart Button -->
-    <button class="btn btn-primary btn-navy mb-3" (click)="openCart()">Open Cart</button>
+      <!-- Cart Button -->
+      <button class="btn btn-primary btn-navy mb-3" (click)="openCart()">Open Cart</button>
 
-    <!-- FullCalendar -->
-    <full-calendar [options]="calendarOptions"></full-calendar>
+      <!-- FullCalendar -->
+      <full-calendar [options]="calendarOptions"></full-calendar>
 
-    <!-- Action Buttons -->
-    <div class="calendar-buttons">
-        <button class="btn btn-delete" (click)="deleteAllEvents()">Delete All</button>
-        <button class="btn btn-primary btn-navy" (click)="addToCart()">Add to Cart</button>
-    </div>
-</div>
-
-<!-- Event Modal -->
-<div id="eventModal" class="modal" tabindex="-1" style="display: none;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Book an Appointment</h5>
-        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+      <!-- Action Buttons -->
+      <div class="calendar-buttons">
+          <button class="btn btn-delete" (click)="deleteAllEvents()">Delete All</button>
+          <button class="btn btn-primary btn-navy" (click)="addToCart()">Add to Cart</button>
       </div>
-      <div class="modal-body">
-        <p><strong>Date:</strong> {{ selectedDate }}</p>
-        <p><strong>Time:</strong> {{ selectedTime }}</p>
-        
-        <!-- Service Dropdown -->
-        <label for="service">Select Service:</label>
-        <select [(ngModel)]="selectedService" class="form-select">
-          <option value="Service A">Service A</option>
-          <option value="Service B">Service B</option>
-          <option value="Service C">Service C</option>
-          <option value="Service D">Service D</option>
-          <option value="Service E">Service E</option>
-          <option value="Service F">Service F</option>
-          <option value="Service G">Service G</option>
-          <option value="Service H">Service H</option>
-          <option value="Service I">Service I</option>
-        </select>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" (click)="confirmEvent()">Confirm</button>
-        <button type="button" class="btn btn-danger" (click)="closeModal()">Cancel</button>
+  </div>
+
+  <!-- Event Modal -->
+  <div id="eventModal" class="modal" tabindex="-1" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Book an Appointment</h5>
+          <button type="button" class="btn-close" aria-label="Close" (click)="closeModal();  $event.preventDefault()"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong>Date:</strong> {{ selectedDate }}</p>
+          <p><strong>Time:</strong> {{ selectedTime }}</p>
+          
+          <!-- Service Dropdown -->
+          <label for="service">Select Service:</label>
+          <select [(ngModel)]="selectedService" class="form-select">
+            <option value="Service A">Service A</option>
+            <option value="Service B">Service B</option>
+            <option value="Service C">Service C</option>
+            <option value="Service D">Service D</option>
+            <option value="Service E">Service E</option>
+            <option value="Service F">Service F</option>
+            <option value="Service G">Service G</option>
+            <option value="Service H">Service H</option>
+            <option value="Service I">Service I</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" (click)="confirmEvent()">Confirm</button>
+          <button type="button" class="btn btn-danger" (click)="closeModal(); $event.preventDefault()">Cancel</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Cart Modal -->
-<div id="cartModal" class="modal" tabindex="-1" style="display: none;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Your Cart</h5>
-        <button type="button" class="btn-close" aria-label="Close" (click)="closeCart()"></button>
-      </div>
-      <div class="modal-body">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Service</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let event of cartEvents">
-              <td>{{ event.title }}</td>
-              <td>{{ event.start.split('T')[0] }}</td>
-              <td>{{ event.start.split('T')[1]?.substring(0, 5) }}</td>
-                <td>{{ getPrice(event.title) }}</td>
-            </tr>
-          </tbody>
-        </table>
-        <h4>Total: ${{ totalPrice }}</h4>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" (click)="buyItems()">Buy</button>
-        <button type="button" class="btn btn-danger" (click)="closeCart()">Close</button>
+  <!-- Cart Modal -->
+  <div id="cartModal" class="modal" tabindex="-1" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Your Cart</h5>
+          <button type="button" class="btn-close" aria-label="Close" (click)="closeCart()"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let event of cartEvents">
+                <td>{{ event.title }}</td>
+                <td>{{ event.start.split('T')[0] }}</td>
+                <td>{{ event.start.split('T')[1]?.substring(0, 5) }}</td>
+                  <td>{{ getPrice(event.title) }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Total: ${{ totalPrice }}</h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" (click)="buyItems()">Buy</button>
+          <button type="button" class="btn btn-danger" (click)="closeCart()">Close</button>
+        </div>
       </div>
     </div>
   </div>

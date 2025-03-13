@@ -16,11 +16,13 @@
 
 .hero-video {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
+  /* top: 60%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
   object-fit: cover;
 }
 
@@ -109,6 +111,8 @@
   display: inline-block;
   /* Adjust the animation duration (20s in this case) to control the sliding speed */
   animation: scroll 20s linear infinite;
+  background-color: white;
+  margin-bottom: 3rem;
 }
 
 .marquee-inner img {

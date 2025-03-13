@@ -6,3 +6,14 @@ img {
   padding: 1vw;
   object-fit: cover;
 }
+.showAll {
+  color: #f6f8d5;
+  background-color: #4f959d;
+  text-align: center;
+  /* width: 50%; */
+  max-height: fit-content;
+  margin: 0 auto;
+}
+.container-fluid {
+  background-color: #205781;
+}
