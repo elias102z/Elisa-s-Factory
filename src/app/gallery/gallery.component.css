@@ -6,3 +6,7 @@ img {
   padding: 1vw;
   object-fit: cover;
 }
+.showAll {
+  color: #f6f8d5;
+  background-color: #4f959d;
+}

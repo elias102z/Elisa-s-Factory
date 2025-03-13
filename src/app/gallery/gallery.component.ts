@@ -39,8 +39,14 @@ export class GalleryComponent implements OnInit {
     { url: 'science3.jpg', tag: 'science' },
   ];
 
-  filteredImages = this.images;
+  // filteredImages = this.images;
   selectedCategory = 'all';
+
+  filteredImages: any[] = [...this.images];
+
+  showAllImages() {
+    this.filteredImages = [...this.images];
+  }
 
   constructor(private filterService: GalleryFilterService) {}
 
