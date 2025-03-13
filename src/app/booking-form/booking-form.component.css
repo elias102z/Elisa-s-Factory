@@ -14,6 +14,10 @@
   color: rgb(0, 0, 0);
 }
 
+.btn-navy:hover {
+  color: green;
+}
+
 .card {
   background-color: rgb(246, 248, 213);
   /* rgb(152, 210, 192) */
@@ -25,8 +29,11 @@
   border: 1px solid black;
 }
 
+.btn-delete:hover {
+  color: red;
+}
+
 .calendar {
-  /* min-width: 50rem !important; */
   padding-bottom: 5rem !important;
   margin-top: 5rem !important;
   color: rgb(246, 248, 213);

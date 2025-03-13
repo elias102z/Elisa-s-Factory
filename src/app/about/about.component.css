@@ -198,7 +198,7 @@ work with us animation
   display: inline-block;
   position: relative;
   transform: translateX(0);
-  animation-duration: 2s;
+  animation-duration: 8s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 }
